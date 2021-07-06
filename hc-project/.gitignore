@@ -11,3 +11,19 @@ web-build/
 
 # macOS
 .DS_Store
+
+## System and generated files
+.idea
+.sass-cache
+
+## Directories
+log/
+dist/
+coverage/
+reports/
+.gradle
+## Files
+yarn.lock
+yarn-error.log
+npm-debug.log
+## package-lock.json

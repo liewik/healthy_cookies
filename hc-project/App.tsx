@@ -7,7 +7,7 @@ import Start from "./pages/Start";
 export const MainContext = React.createContext({isAuth: false});
 
 export default () => {
-    const [isAuthenticated, setAuthenticated] = useState<boolean>(true);
+    const [isAuthenticated, setAuthenticated] = useState<boolean>(false);
     const goToMain = useCallback(() => setAuthenticated(true), []);
 
 

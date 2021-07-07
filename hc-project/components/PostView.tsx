@@ -1,13 +1,15 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import {PostViewProps} from "../interfaces/Post/PostViewProps";
 import {Text, TouchableOpacity, View} from "react-native";
 import {useNavigation} from "@react-navigation/native";
-import {Card, Icon} from "react-native-elements";
+import {Badge, Card, Icon} from "react-native-elements";
 
 
 export const PostView = ({
-                             text, title, imgUrl,
-                         }: PostViewProps) => {
+ text, title, imgUrl,
+}: PostViewProps) => {
+    let [likes, addLike] = useState(0)
+
     const navigation = useNavigation();
     const onPostViewPress = useCallback(
         () => {
@@ -18,7 +20,7 @@ export const PostView = ({
 
     const onPostLike = useCallback(
         () => {
-            console.log('hello')
+            addLike(++likes);
         },
         [],
     );
@@ -34,13 +36,20 @@ export const PostView = ({
             <View style={{ display: 'flex', flexDirection: 'row'}}>
                 <TouchableOpacity onPress={onPostLike}>
                     <Icon
+                        size={50}
                         name='like'
                         type='evilicon'
                         color='#517fa4'
                     />
+                    <Badge
+                        status="primary"
+                        containerStyle={{ position: 'absolute', top: -4, right: -4 }}
+                        value={likes}
+                    />
                 </TouchableOpacity>
                     <TouchableOpacity onPress={onPostLike}>
                         <Icon
+                            size={50}
                             name='plus'
                             type='evilicon'
                             color='#517fa4'
